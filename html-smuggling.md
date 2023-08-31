@@ -72,11 +72,13 @@ If we load that page we should see the Microsoft Login Page! text and it should 
 ## Malicious Smuggle Test
 Now that we have seen benign usage of some ways to do HTML Smuggling, lets try with an actual binary. For this I am using a renamed version of dnscat because I know Defender blocks it as malicious. The dnscat executable I have renamed to leroy3.exe. 
 ![](smuggle1.png)
+
 First, we need to base64 encode it because the binary can’t directly be copied as a buffer because it contains various characters that might break the buffer and full file may not be copied that way. We use the base64 tool in Kali:
 ```
 Cat leroy.exe | base64
 ```
 ![](smuggle2.png)
+
 It is a fairly long output. The issue with this is there is “enter” or carriage returns and its not all in one single line. In order to supply this into our blob as a buffer, we need a single string with no enters. To do this we go [here](https://base64.guru/converter/encode/file) and upload our file and convert it to base64 as plain text-just the base64 value:
 ![](smuggle3.png)
 The goal is to create a JavaScript Blob and a script that will allow us as an attacker to make our code recompile as an EXE file at the victim end. This approach can bypass many content filters and firewalls since the data is travelling as a string text. Here is the template we can use, just replace var binary='<value>' with the actual Base64 string value
