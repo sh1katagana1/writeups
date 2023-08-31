@@ -55,4 +55,6 @@ Let’s break this down:
 11.	Next, we see the readAsText portion. This starts reading the contents of the specified Blob, once finished, the result attribute contains the contents of the file as a text string. The Blob is referenced by its variable abc.
 12.	The rest of the code just closes out the rest of the HTML document
 
-
+If we save that and run it in a browser we will see the words Wassup Playa. 
+## HTML5 Download Attribute
+One way that we can get a user to download something is using the download attribute from HTML5. For this I hosted an Atomic Red Team test dll called s.dll. The raw file can be found [here](https://github.com/sh1katagana1/RedTeam/raw/main/s.dll) So my HTML page that I would send to the victim could look like this (obviously this is not very pretty, just functional for testing)
