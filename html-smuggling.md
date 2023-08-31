@@ -17,3 +17,42 @@ new Blob("blobParts, options");
 - Options: It is an optional object.
 - Type: It is a Blob type, generally MIME-type like image.png.
 
+An example would be:
+```
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <title>JavaScript Blob</title>  
+</head>  
+<body>  
+    <p id="main"></p>  
+    <script>  
+var abc = new Blob(["Wassup Playa"],   
+{type : "text/plain"});  
+var def = new FileReader();  
+def.addEventListener("loadend", function(e) {  
+document.getElementById("main").innerHTML  
+     = e.srcElement.result;  
+});  
+def.readAsText(abc);  
+</script>  
+</body>  
+</html>  
+```
+Let’s break this down:
+
+1.	We start our HTML document with the tag HTML
+2.	This is followed by <head> to indicate a header, where you can store things like meta tags as well as a title
+3.	<title> is what will show at the top of the tab
+4.	<body> starts the body of the HTML file
+5.	<p> is to indicate a parameter. In this case we are specifying ‘main’ as an id element. Later in the HTML we will be referencing this ID. 
+6.	<script> indicates that what comes next is Javascript
+7.	var abc = new Blob(["Wassup Playa"],   {type : "text/plain"});  We can see this follows the Javascript Blob syntax I mentioned earlier. The text here, Wassup Playa, is what we will want shown on the page, thus it is the data element, in this case being a string value. Then its followed by the MIME type of text/plain. All of this is being assigned to the variable abc, so that whenever abc is used, it really means this Blob that has the string value of Wassup Playa
+8.	Next we see a variable assigning FileReader. The FileReader object lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read. This is assigned to the variable def. https://developer.mozilla.org/en-US/docs/Web/API/FileReader 
+9.	It is using the FileReader component of addEventListener, which sets up a function that will be called whenever the specified event is delivered to the target. It has the syntax of addEventListener(type, listener) So in our code, the type is FileReader’s loadend event https://developer.mozilla.org/en-US/docs/Web/API/FileReader/loadend_event The loadend event is fired when a file read has completed, successfully or not. Next part is function(e). Function is the function to run when the event occurs, which in this case is the loadend event. 
+10.	Next it looks through the document table and gets the element named ‘main’, which we defined earlier in the start of our paragraph. innerHTML sets or returns the HTML content (inner HTML) of an element. In the case of our code, it is setting or changing the value that was in the element with the id of ‘main’ to e.srcElement.result
+11.	Next, we see the readAsText portion. This starts reading the contents of the specified Blob, once finished, the result attribute contains the contents of the file as a text string. The Blob is referenced by its variable abc.
+12.	The rest of the code just closes out the rest of the HTML document
+
+
