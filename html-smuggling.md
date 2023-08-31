@@ -71,3 +71,5 @@ If we load that page we should see the Microsoft Login Page! text and it should 
 
 ## Malicious Smuggle Test
 Now that we have seen benign usage of some ways to do HTML Smuggling, lets try with an actual binary. For this I am using a renamed version of dnscat because I know Defender blocks it as malicious. The dnscat executable I have renamed to leroy3.exe. 
+![](smuggle1.png)
+
