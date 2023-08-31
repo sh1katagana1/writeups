@@ -159,7 +159,7 @@ Base64 encode this on base64.guru and try the same template.
 ## References
 [delivr](https://blog.delivr.to/html-smuggling-recent-observations-of-threat-actor-techniques-74501d5c8a06) \
 [outflank](https://outflank.nl/blog/2018/08/14/html-smuggling-explained/) \
-[pentest notes](https://github.com/SofianeHamlaoui/Pentest-Notes/blob/master/offensive-security/defense-evasion/file-smuggling-with-html-and-javascript.md) \ 
+[pentest notes](https://github.com/SofianeHamlaoui/Pentest-Notes/blob/master/offensive-security/defense-evasion/file-smuggling-with-html-and-javascript.md) \
 [cyfirma](https://www.cyfirma.com/outofband/html-smuggling-a-stealthier-approach-to-deliver-malware/) \
 [trustwave](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/html-smuggling-the-hidden-threat-in-your-inbox/) \
 [html smuggling detection](https://micahbabinski.medium.com/html-smuggling-detection-5adefebb6841) \
