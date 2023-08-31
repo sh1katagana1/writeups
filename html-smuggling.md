@@ -135,7 +135,7 @@ We do see code above indicating it is indeed dnscat. Lets break down what the co
 2.	Variable binary: This variable contains the base64 string of our binary and is used to provide function b64toarray input. Replace Value with our base64 encoded string.
 3.	Variable blob: Holds the blob we just created and takes two inputs as explained above. Here, since we are providing a binary as input the MIME type becomes octet/stream
 4.	Variable payloadfilename: It is the name that will be given to our binary once it is downloaded on the victim’s machine. This is what you would want to name to be convincing to the victim.
-5.	CreateElement: A DOM function that can create new HTML elements with the help of JavaScript. For example to create a new para in HTML we type: <p>New Para</p>
+5.	CreateElement: A DOM function that can create new HTML elements with the help of JavaScript. For example to create a new para in HTML we type: \<p>New Para\</p>
 6.	style: We are using the styling ‘display: none’ to be more discreet so that a tag isn’t visible on the output.
 7.	createObjectURL(): A DOM function that can return a DOMString containing a value that represents the URL of an object. This object can be a file, media source or in our case blob. It is very necessary as the a.download works on valid URLs only. For our payload blob to be downloaded on the victim, we need to supply the a.download element with a valid URL which this function returns.
 8.	click(): Is what will trigger this anchor tag to automatically run. It simulates as if a user has actually clicked on the link provided by the href tag.
