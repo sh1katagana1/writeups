@@ -13,7 +13,7 @@ The syntax for creating a JavaScript blob may be defined as:
 ```
 new Blob("blobParts, options");
 ```
-•	Blobparts: It is an array of Blob, BufferSource, and string values.
-•	Options: It is an optional object.
-•	Type: It is a Blob type, generally MIME-type like image.png.
+- Blobparts: It is an array of Blob, BufferSource, and string values.
+- Options: It is an optional object.
+- Type: It is a Blob type, generally MIME-type like image.png.
 
