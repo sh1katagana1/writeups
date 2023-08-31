@@ -157,11 +157,11 @@ Base64 encode this on base64.guru and try the same template.
 - Microsoft’s Safe Links and Safe Attachments provide real-time protection against HTML smuggling and other email threats by utilizing a virtual environment to check links and attachments in email messages before they are delivered to recipients. Thousands of suspicious behavioral attributes are detected and analyzed in emails to determine a phishing attempt
 
 ## References
-![https://blog.delivr.to/html-smuggling-recent-observations-of-threat-actor-techniques-74501d5c8a06](https://blog.delivr.to/html-smuggling-recent-observations-of-threat-actor-techniques-74501d5c8a06) \
-![https://outflank.nl/blog/2018/08/14/html-smuggling-explained/](https://outflank.nl/blog/2018/08/14/html-smuggling-explained/) \
-![https://github.com/SofianeHamlaoui/Pentest-Notes/blob/master/offensive-security/defense-evasion/file-smuggling-with-html-and-javascript.md](https://github.com/SofianeHamlaoui/Pentest-Notes/blob/master/offensive-security/defense-evasion/file-smuggling-with-html-and-javascript.md) \ 
-![https://www.cyfirma.com/outofband/html-smuggling-a-stealthier-approach-to-deliver-malware/](https://www.cyfirma.com/outofband/html-smuggling-a-stealthier-approach-to-deliver-malware/) \
-![https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/html-smuggling-the-hidden-threat-in-your-inbox/](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/html-smuggling-the-hidden-threat-in-your-inbox/) \
-![https://micahbabinski.medium.com/html-smuggling-detection-5adefebb6841](https://micahbabinski.medium.com/html-smuggling-detection-5adefebb6841) \
-![https://www.hackingarticles.in/a-detailed-guide-on-html-smuggling/](https://www.hackingarticles.in/a-detailed-guide-on-html-smuggling/) \
+![delivr](https://blog.delivr.to/html-smuggling-recent-observations-of-threat-actor-techniques-74501d5c8a06) \
+![outflank](https://outflank.nl/blog/2018/08/14/html-smuggling-explained/) \
+![pentest notes](https://github.com/SofianeHamlaoui/Pentest-Notes/blob/master/offensive-security/defense-evasion/file-smuggling-with-html-and-javascript.md) \ 
+![cyfirma](https://www.cyfirma.com/outofband/html-smuggling-a-stealthier-approach-to-deliver-malware/) \
+![trustwave](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/html-smuggling-the-hidden-threat-in-your-inbox/) \
+![html smuggling detection](https://micahbabinski.medium.com/html-smuggling-detection-5adefebb6841) \
+![hacking articles](https://www.hackingarticles.in/a-detailed-guide-on-html-smuggling/) \
 
