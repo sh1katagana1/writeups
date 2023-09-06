@@ -43,7 +43,7 @@ def.readAsText(abc);
 Let’s break this down:
 
 1.	We start our HTML document with the tag HTML
-2.	This is followed by <head> to indicate a header, where you can store things like meta tags as well as a title
+2.	This is followed by \<head\> to indicate a header, where you can store things like meta tags as well as a title
 3.	<title> is what will show at the top of the tab
 4.	<body> starts the body of the HTML file
 5.	<p> is to indicate a parameter. In this case we are specifying ‘main’ as an id element. Later in the HTML we will be referencing this ID. 
