@@ -46,7 +46,7 @@ Let’s break this down:
 2.	This is followed by the \<head> tag to indicate a header, where you can store things like meta tags as well as a title
 3.	<title> is what will show at the top of the tab
 4.	\<body> starts the body of the HTML file
-5.	\<p> is to indicate a parameter. In this case we are specifying ‘main’ as an id element. Later in the HTML we will be referencing this ID. 
+5.	\<p> is to indicate a paragraph. In this case we are specifying ‘main’ as an id element. Later in the HTML we will be referencing this ID. 
 6.	\<script> indicates that what comes next is Javascript
 7.	var abc = new Blob(["Wassup Playa"],   {type : "text/plain"});  We can see this follows the Javascript Blob syntax I mentioned earlier. The text here, Wassup Playa, is what we will want shown on the page, thus it is the data element, in this case being a string value. Then its followed by the MIME type of text/plain. All of this is being assigned to the variable abc, so that whenever abc is used, it really means this Blob that has the string value of Wassup Playa
 8.	Next we see a variable assigning FileReader. The FileReader object lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read. This is assigned to the variable def. https://developer.mozilla.org/en-US/docs/Web/API/FileReader 
