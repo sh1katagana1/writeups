@@ -85,7 +85,7 @@ It is a fairly long output. The issue with this is there is “enter” or carri
 
 ![](smuggle3.png)
 
-The goal is to create a JavaScript Blob and a script that will allow us as an attacker to make our code recompile as an EXE file at the victim end. This approach can bypass many content filters and firewalls since the data is travelling as a string text. Here is the template we can use, just replace var binary='<value>' with the actual Base64 string value
+The goal is to create a JavaScript Blob and a script that will allow us as an attacker to make our code recompile as an EXE file at the victim end. This approach can bypass many content filters and firewalls since the data is travelling as a string text. Here is the template we can use, from Hacking Articles https://www.hackingarticles.in/a-detailed-guide-on-html-smuggling/, just replace var binary='<value>' with the actual Base64 string value
 ```
 <html>
 <body>
