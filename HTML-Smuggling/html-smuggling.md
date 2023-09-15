@@ -1,5 +1,7 @@
 # HTML Smuggling
 
+[![A smugglers life for me](https://img.youtube.com/vi/tBjhqXin6jo/0.jpg)](https://www.youtube.com/watch?v=tBjhqXin6jo "A Smugglers Life For Me")
+
 ## Summary
 HTML Smuggling has been around for a while, but it has seen an uptick in its usage lately with malware like Qakbot utilizing it. 
 ## What is it?
