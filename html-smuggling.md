@@ -5,7 +5,7 @@ HTML Smuggling has been around for a while, but it has seen an uptick in its usa
 
 ***
 
-{% include youtube.html id="tBjhqXin6jo" %}
+{% include youtube.html id=”JLMbpiywVxQ” %}
 
 ## What is it?
 HTML Smuggling is an evasive payload delivery method that helps an attacker smuggle payload past content filters and firewalls by hiding malicious payloads inside of seemingly benign HTML files. This is possible by using JavaScript blobs and the HTML5 download attribute used with the anchor tag.
